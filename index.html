@@ -85,49 +85,26 @@
         }
         #main-content, #cake-section, #dare-section { display: none; }
 
-        /* 4. TRUE WATERBENDING ANIMATION (Around & Over) */
-        .water-bender-container {
+        /* 4. MAIN GLOWING PHOTO FRAME (Cleaned up, no water) */
+        .main-photo-container {
             position: relative; display: inline-block; margin: 30px 0; width: 220px; height: 220px;
         }
-        .water-bender-container img {
+        .main-photo-container img {
             width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-            position: relative; z-index: 2; box-shadow: 0 0 30px rgba(0, 150, 255, 0.6);
+            position: relative; z-index: 2; 
+            border: 4px solid #ff0000;
+            box-shadow: 0 0 25px #ff0000, 0 0 15px rgba(255,0,0,0.5) inset;
+            transition: transform 0.4s ease;
         }
-        
-        /* The fluid washing OVER her photo */
-        .water-over {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border-radius: 50%; z-index: 3; pointer-events: none;
-            background: linear-gradient(135deg, rgba(255,255,255,0) 20%, rgba(0, 180, 255, 0.4) 50%, rgba(255,255,255,0) 80%);
-            animation: washOver 3s ease-in-out infinite alternate;
-            mix-blend-mode: hard-light;
-        }
-        
-        /* The 3D liquid rings spinning AROUND her photo */
-        .water-ring {
-            position: absolute; top: -15px; left: -15px; right: -15px; bottom: -15px;
-            border: 8px solid transparent;
-            border-top: 10px solid rgba(0, 180, 255, 0.9);
-            border-bottom: 10px solid rgba(0, 220, 255, 0.7);
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: waterSpin 4s linear infinite;
-            filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.8));
-            z-index: 4; pointer-events: none;
-        }
-        .water-ring::before {
-            content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 8px solid transparent; border-left: 10px solid rgba(0, 150, 255, 0.8);
-            border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
-            animation: waterSpin 3s linear infinite reverse;
+        .main-photo-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #ff0000;
         }
 
-        @keyframes waterSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes washOver { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.05); opacity: 0.9; } }
-
-        /* 5. MEMORY WALL GALLERY (With Text Captions) */
+        /* 5. MEMORY WALL GALLERY */
         .photo-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
         .photo-card {
-            width: 140px; height: 180px; /* Taller to fit text */
+            width: 140px; height: 180px;
             background: #0a0000; border: 2px solid #ff0000; border-radius: 10px;
             overflow: hidden; box-shadow: 0 0 10px #ff0000; transition: 0.4s ease;
             display: flex; flex-direction: column; position: relative;
@@ -171,7 +148,7 @@
     <!-- ENTRY SCREEN -->
     <div id="entry-screen" class="container" style="margin-top: 20vh;">
         <h1>The Upside Down</h1>
-        <p>Ek epic surprise wait kar raha hai tumhara...</p>
+        <p>Tumhare liye ek chhota sa surprise hai... ready?</p>
         <button onclick="enterSite()">ENTER IF YOU DARE</button>
     </div>
 
@@ -181,36 +158,26 @@
         
         <!-- EPIC BATTLE SCENE: Upside Down Spidey vs Vecna -->
         <div class="battle-scene">
-            <!-- Spider-Man Web Line -->
             <div class="spider-web-line"></div>
-            <!-- Spider-Man (Hanging Upside Down) -->
             <img class="spidey" src="https://cdn-icons-png.flaticon.com/512/1090/1090806.png" alt="Spider-Man" style="transform: rotate(180deg) scaleX(-1);">
-            
-            <!-- Vecna's Magic Attack -->
             <div class="vecna-magic"></div>
-            <!-- Vecna -->
             <img class="vecna" src="https://cdn-icons-png.flaticon.com/512/8250/8250269.png" alt="Vecna">
         </div>
 
-        <p>Mere sabse favourite person ko a very Happy Birthday! ❤️</p>
-        <p>Tumhe sach batau? <span class="highlight">After meeting you, my life changed completely.</span> I have never been this much happier before. Thank you for just being in my life.</p>
+        <p>Happy Birthday to my absolute favorite person! ❤️</p>
+        <p>Sach bataun toh, <span class="highlight">jab se tum life mein aayi ho, sab kuch kitna better ho gaya hai.</span> Pata nahi pehle kaise chal raha tha sab, par ab bahut khush hoon. Thank you meri life mein aane ke liye aur use itna khoobsurat banane ke liye.</p>
         
-        <p>Tum meri life ki <span class="blue-highlight">Katara</span> ho, healing everything around you (and doing waterbending with my heart 🌊😉). Aur main tumhara friendly neighborhood Spider-Man... jisne aaj tumhari nayi movie ki ticket sponsor ki hai, yaad rakhna! 🕷️🕸️</p>
+        <p>Tum bilkul meri <span class="blue-highlight">Katara</span> jaisi ho... hamesha sabka khayal rakhne wali (aur mere dil ke saath waterbending karne wali 🌊😉). Aur main? Tumhara apna friendly neighborhood Spider-Man... jisne aaj tumhari Spider-Man wali nayi movie ki ticket sponsor ki hai, bhoolna mat! 🕷️🕸️</p>
 
-        <!-- NEW 3D KATARA WATERBENDING PHOTO -->
-        <div class="water-bender-container">
-            <!-- Replace with her main photo file name if using GitHub -->
+        <!-- CLEAN GLOWING MAIN PHOTO (Water effects removed) -->
+        <div class="main-photo-container">
             <img src="main.jpg" alt="My Katara">
-            <!-- The new liquid washing over her face -->
-            <div class="water-over"></div>
-            <!-- The new 3D spinning water rings -->
-            <div class="water-ring"></div>
         </div>
 
         <hr style="border-color: #ff0000; margin: 30px 0;">
 
         <h2>Our Memories</h2>
-        <!-- 7 PHOTO GALLERY WITH CUTE NICKNAMES & EMOJIS -->
+        <!-- 7 PHOTO GALLERY -->
         <div class="photo-gallery">
             <div class="photo-card">
                 <img src="1.jpg" alt="Memory 1">
@@ -251,16 +218,15 @@
 
         <!-- CAKE & CANDLE SECTION -->
         <h2>Make a Wish</h2>
-        <p>Vecna is watching... Apne phone ke mic ke paas zor se phoonk maaro to blow out the candle!</p>
+        <p>Vecna is watching 👀... Ek kaam karo, apne phone ke mic ke paas zor se phoonk maaro aur candle bujhao!</p>
         
         <div class="cake-wrapper">
-            <img id="cake" src="https://cdn-icons-png.flaticon.com/512/3256/3256793.png" style="width: 180px; filter: drop-shadow(0 0 20px #ff0000);">
-            <img id="candle-flame" src="https://cdn-icons-png.flaticon.com/512/1997/1997327.png" style="width: 40px; position: absolute; top: -25px; left: 50%; transform: translateX(-50%); filter: drop-shadow(0 0 15px #ffaa00); transition: opacity 0.5s ease-out;">
+            <img id="cake" src="https://img.icons8.com/color/256/birthday-cake.png" style="width: 180px; filter: drop-shadow(0 0 20px #ff0000);">
+            <img id="candle-flame" src="https://img.icons8.com/color/256/fire-element.png" style="width: 50px; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); filter: drop-shadow(0 0 15px #ffaa00); transition: opacity 0.5s ease-out;">
         </div>
         <br>
         
         <button id="mic-btn" onclick="startMic()">Allow Mic to Blow Candle</button>
-        <!-- This Cut button is hidden until the candle goes out -->
         <button id="action-btn-cut" onclick="cutCake()">🔪 Cut The Cake</button>
     </div>
 
@@ -268,105 +234,126 @@
     <div id="dare-section" class="container" style="margin-top: 20px;">
         <h2>🎉 Cake is Cut!</h2>
         <p style="font-size: 20px; font-weight: bold; color: #ff0000;">Here is your Dare:</p>
-        <p>Make a short cute reel/video of yourself right now and send it to me! And no, you can't water-bend your way out of this one! No excuses!</p>
+        <p>Abhi ke abhi apni ek cute si short video/reel banao aur mujhe bhejo! Aur haan, koi nakhre nahi chalenge isme, mujhe abhi chahiye!</p>
 
         <hr style="border-color: #ff0000; margin: 30px 0;">
 
         <h2>Ask for a Gift</h2>
-        <p>Bolo kya gift chahiye? Ya phir bas ek pyaara sa thank you bol do (I am watching 👀)</p>
+        <p>Ab batao kya gift chahiye tumhe? Ya phir bas ek sweet sa thank you type kardo yahan (I am watching you 👀)</p>
         
         <!-- INTEGRATED FORMSPREE FORM -->
         <form action="https://formspree.io/f/mvzejeeg" method="POST">
-            <!-- Added 'required' so she has to type something before sending -->
             <textarea name="message" rows="4" placeholder="Type your message here..." required></textarea><br>
             <button type="submit">Send Message</button>
         </form>
     </div>
-<script>
-        // 1. GENERATE UPSIDE DOWN SPORES
-        const sporeContainer = document.getElementById('spores');
-        for (let i = 0; i < 40; i++) {
-            let spore = document.createElement('div');
-            spore.className = 'spore';
-            spore.style.width = Math.random() * 4 + 2 + 'px';
-            spore.style.height = spore.style.width;
-            spore.style.left = Math.random() * 100 + 'vw';
-            spore.style.animationDuration = Math.random() * 5 + 4 + 's'; 
-            spore.style.animationDelay = Math.random() * 5 + 's';
-            sporeContainer.appendChild(spore);
-        }
+    <body>
+    <!-- Floating Spores Background -->
+    <div id="spores"></div>
+    
+    <!-- Spider Webs in the top corners -->
+    <img class="web-corner web-tl" src="https://cdn-icons-png.flaticon.com/512/3133/3133866.png" alt="web">
+    <img class="web-corner web-tr" src="https://cdn-icons-png.flaticon.com/512/3133/3133866.png" alt="web">
 
-        // 2. ENTER THE GATE (START EXPERIENCE)
-        function enterSite() {
-            // Fade out entry screen
-            document.getElementById('entry-screen').style.display = 'none';
-            const mainContent = document.getElementById('main-content');
-            mainContent.style.display = 'block';
-            
-            // Play Music (Browsers require a click first, which is why we have the Enter button)
-            document.getElementById('bgm').play().catch(e => console.log("Audio play issue: " + e));
-        }
+    <!-- ENTRY SCREEN -->
+    <div id="entry-screen" class="container" style="margin-top: 20vh;">
+        <h1>The Upside Down</h1>
+        <p>Tumhare liye ek chhota sa surprise hai... ready?</p>
+        <button onclick="enterSite()">ENTER IF YOU DARE</button>
+    </div>
 
-        // 3. MICROPHONE LOGIC (BLOW THE CANDLE)
-        function startMic() {
-            document.getElementById('mic-btn').style.display = 'none';
-            
-            navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(function(stream) {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const analyser = audioContext.createAnalyser();
-                const microphone = audioContext.createMediaStreamSource(stream);
-                
-                microphone.connect(analyser);
-                analyser.fftSize = 256;
-                const bufferLength = analyser.frequencyBinCount;
-                const dataArray = new Uint8Array(bufferLength);
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="container">
+        <h1>Happy Birthday!</h1>
+        
+        <!-- EPIC BATTLE SCENE: Upside Down Spidey vs Vecna -->
+        <div class="battle-scene">
+            <div class="spider-web-line"></div>
+            <img class="spidey" src="https://cdn-icons-png.flaticon.com/512/1090/1090806.png" alt="Spider-Man" style="transform: rotate(180deg) scaleX(-1);">
+            <div class="vecna-magic"></div>
+            <img class="vecna" src="https://cdn-icons-png.flaticon.com/512/8250/8250269.png" alt="Vecna">
+        </div>
 
-                function checkVolume() {
-                    analyser.getByteFrequencyData(dataArray);
-                    let sum = 0;
-                    for (let i = 0; i < bufferLength; i++) { sum += dataArray[i]; }
-                    let average = sum / bufferLength;
+        <p>Happy Birthday to my absolute favorite person! ❤️</p>
+        <p>Sach bataun toh, <span class="highlight">jab se tum life mein aayi ho, sab kuch kitna better ho gaya hai.</span> Pata nahi pehle kaise chal raha tha sab, par ab bahut khush hoon. Thank you meri life mein aane ke liye aur use itna khoobsurat banane ke liye.</p>
+        
+        <p>Tum bilkul meri <span class="blue-highlight">Katara</span> jaisi ho... hamesha sabka khayal rakhne wali (aur mere dil ke saath waterbending karne wali 🌊😉). Aur main? Tumhara apna friendly neighborhood Spider-Man... jisne aaj tumhari Spider-Man wali nayi movie ki ticket sponsor ki hai, bhoolna mat! 🕷️🕸️</p>
 
-                    // When she blows into the mic (volume spike)
-                    if (average > 45) { 
-                        // Hide candle flame
-                        document.getElementById('candle-flame').style.opacity = '0';
-                        
-                        // Show the Cut Cake button
-                        document.getElementById('action-btn-cut').style.display = 'inline-block';
-                        
-                        // Turn off microphone
-                        stream.getTracks().forEach(track => track.stop());
-                    } else {
-                        requestAnimationFrame(checkVolume);
-                    }
-                }
-                checkVolume();
-            }).catch(function(err) { 
-                alert("Vecna blocked your mic! Please allow microphone access to blow the candle."); 
-                document.getElementById('mic-btn').style.display = 'inline-block';
-            });
-        }
+        <!-- CLEAN GLOWING MAIN PHOTO (Water effects removed) -->
+        <div class="main-photo-container">
+            <img src="main.jpg" alt="My Katara">
+        </div>
 
-        // 4. CUT THE CAKE LOGIC
-        function cutCake() {
-            // Swap cake image to a sliced version
-            const cakeImg = document.getElementById('cake');
-            cakeImg.src = "https://cdn-icons-png.flaticon.com/512/3256/3256821.png";
-            
-            // Hide the cut button
-            document.getElementById('action-btn-cut').style.display = 'none';
-            
-            // Reveal Dare & Form Section
-            const dareSection = document.getElementById('dare-section');
-            dareSection.style.display = 'block';
-            
-            // Scroll down so she sees the dare immediately
-            setTimeout(() => { 
-                dareSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 300);
-        }
-    </script>
-</body>
-</html>
+        <hr style="border-color: #ff0000; margin: 30px 0;">
+
+        <h2>Our Memories</h2>
+        <!-- 7 PHOTO GALLERY -->
+        <div class="photo-gallery">
+            <div class="photo-card">
+                <img src="1.jpg" alt="Memory 1">
+                <div class="photo-caption">🍧 rasmali 🍧</div>
+            </div>
+            <div class="photo-card">
+                <img src="2.jpg" alt="Memory 2">
+                <div class="photo-caption">🌊 katara 🌊</div>
+            </div>
+            <div class="photo-card">
+                <img src="3.jpg" alt="Memory 3">
+                <div class="photo-caption">🥺 cutiee 🥺</div>
+            </div>
+            <div class="photo-card">
+                <img src="4.jpg" alt="Memory 4">
+                <div class="photo-caption">🧸 kuchu puchu 🧸</div>
+            </div>
+            <div class="photo-card">
+                <img src="5.jpg" alt="Memory 5">
+                <div class="photo-caption">🤪 pagli 🤪</div>
+            </div>
+            <div class="photo-card">
+                <img src="6.jpg" alt="Memory 6">
+                <div class="photo-caption">💖 bbu 💖</div>
+            </div>
+            <div class="photo-card">
+                <img src="7.jpg" alt="Memory 7">
+                <div class="photo-caption">✨ kriti ✨</div>
+            </div>
+        </div>
+
+        <!-- AUDIO TRACK -->
+        <audio id="bgm" loop>
+            <source src="song.mp3" type="audio/mpeg">
+        </audio>
+
+        <hr style="border-color: #ff0000; margin: 30px 0;">
+
+        <!-- CAKE & CANDLE SECTION -->
+        <h2>Make a Wish</h2>
+        <p>Vecna is watching 👀... Ek kaam karo, apne phone ke mic ke paas zor se phoonk maaro aur candle bujhao!</p>
+        
+        <div class="cake-wrapper">
+            <img id="cake" src="https://img.icons8.com/color/256/birthday-cake.png" style="width: 180px; filter: drop-shadow(0 0 20px #ff0000);">
+            <img id="candle-flame" src="https://img.icons8.com/color/256/fire-element.png" style="width: 50px; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); filter: drop-shadow(0 0 15px #ffaa00); transition: opacity 0.5s ease-out;">
+        </div>
+        <br>
+        
+        <button id="mic-btn" onclick="startMic()">Allow Mic to Blow Candle</button>
+        <button id="action-btn-cut" onclick="cutCake()">🔪 Cut The Cake</button>
+    </div>
+
+    <!-- DARE & COMMENT SECTION -->
+    <div id="dare-section" class="container" style="margin-top: 20px;">
+        <h2>🎉 Cake is Cut!</h2>
+        <p style="font-size: 20px; font-weight: bold; color: #ff0000;">Here is your Dare:</p>
+        <p>Abhi ke abhi apni ek cute si short video/reel banao aur mujhe bhejo! Aur haan, koi nakhre nahi chalenge isme, mujhe abhi chahiye!</p>
+
+        <hr style="border-color: #ff0000; margin: 30px 0;">
+
+        <h2>Ask for a Gift</h2>
+        <p>Ab batao kya gift chahiye tumhe? Ya phir bas ek sweet sa thank you type kardo yahan (I am watching you 👀)</p>
+        
+        <!-- INTEGRATED FORMSPREE FORM -->
+        <form action="https://formspree.io/f/mvzejeeg" method="POST">
+            <textarea name="message" rows="4" placeholder="Type your message here..." required></textarea><br>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
